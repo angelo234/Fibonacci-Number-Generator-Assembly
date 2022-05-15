@@ -1,4 +1,4 @@
-Microsoft (R) Macro Assembler Version 14.31.31107.0	    05/15/22 01:31:58
+Microsoft (R) Macro Assembler Version 14.31.31107.0	    05/15/22 01:35:26
 fibonacci.asm						     Page 1 - 1
 
 
@@ -22,7 +22,7 @@ fibonacci.asm						     Page 1 - 1
 			      C 
 
  00000000			.data
- 00000000 54 79 70 65 20		inputMsg	BYTE	"Type in the nth Fibonacci number to print.",0
+ 00000000 54 79 70 65 20	  inputMsg  BYTE  "Type in the nth Fibonacci number to print.",0
 	   69 6E 20 74 68
 	   65 20 6E 74 68
 	   20 46 69 62 6F
@@ -36,53 +36,53 @@ fibonacci.asm						     Page 1 - 1
  00000000			main PROC
 
  00000000			_read:
-					; Read user input
+				  ; Read user input
 
- 00000000  BA 00000000 R		mov		edx, OFFSET inputMsg
- 00000005  E8 00000000 E		call	WriteString
-					
- 0000000A  E8 00000000 E		call	ReadInt
- 0000000F  71 02			jno		_goodInput
-					
- 00000011  EB ED			jmp		_read ; On bad input, go back to _read
+ 00000000  BA 00000000 R	  mov   edx, OFFSET inputMsg
+ 00000005  E8 00000000 E	  call  WriteString
+				  
+ 0000000A  E8 00000000 E	  call  ReadInt
+ 0000000F  71 02		  jno   _goodInput
+				  
+ 00000011  EB ED		  jmp   _read ; On bad input, go back to _read
 
  00000013			_goodInput:
-					; Setup stuff for the algorithm
- 00000013  83 E8 02			sub		eax, 2
+				  ; Setup stuff for the algorithm
+ 00000013  83 E8 02		  sub   eax, 2
 
- 00000016  8B D0			mov		edx, eax ; loop counter
- 00000018  BB 00000001			mov		ebx, 1
- 0000001D  B9 00000001			mov		ecx, 1
+ 00000016  8B D0		  mov   edx, eax ; loop counter
+ 00000018  BB 00000001		  mov   ebx, 1
+ 0000001D  B9 00000001		  mov   ecx, 1
 
-					; If fib # was 1 or 2, just output 1
- 00000022  83 F8 00			cmp		eax, 0
- 00000025  7E 0C			jle		_done
+				  ; If fib # was 1 or 2, just output 1
+ 00000022  83 F8 00		  cmp   eax, 0
+ 00000025  7E 0C		  jle   _done
 
  00000027			_loop:
-					; The fibonacci algorithm
+				  ; The fibonacci algorithm
 
- 00000027  8B C3			mov		eax, ebx
- 00000029  03 D9			add		ebx, ecx
- 0000002B  8B C8			mov		ecx, eax
-					
- 0000002D  4A				dec		edx 
- 0000002E  83 FA 00			cmp		edx, 0
- 00000031  75 F4			jne		_loop
+ 00000027  8B C3		  mov   eax, ebx
+ 00000029  03 D9		  add   ebx, ecx
+ 0000002B  8B C8		  mov   ecx, eax
+				  
+ 0000002D  4A			  dec   edx 
+ 0000002E  83 FA 00		  cmp   edx, 0
+ 00000031  75 F4		  jne   _loop
 
  00000033			_done:
-					; Output fibonacci number
+				  ; Output fibonacci number
 
- 00000033  8B C3			mov		eax, ebx
- 00000035  E8 00000000 E		call	WriteInt
- 0000003A  E8 00000000 E		call	CrLf
-					
-					Invoke ExitProcess,0
+ 00000033  8B C3		  mov   eax, ebx
+ 00000035  E8 00000000 E	  call  WriteInt
+ 0000003A  E8 00000000 E	  call  CrLf
+				  
+				  Invoke ExitProcess,0
  0000003F  6A 00	   *	    push   +000000000h
  00000041  E8 00000000 E   *	    call   ExitProcess
  00000046			main ENDP
 
 				END main
-Microsoft (R) Macro Assembler Version 14.31.31107.0	    05/15/22 01:31:58
+Microsoft (R) Macro Assembler Version 14.31.31107.0	    05/15/22 01:35:26
 fibonacci.asm						     Symbols 2 - 1
 
 
